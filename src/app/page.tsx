@@ -10,7 +10,6 @@ async function getData() {
 }
 export default async function Home() {
   const data = await getData();
-  // const randomElement = data[Math.floor(Math.random() * data.length)];
   return (
     <main className="w-full h-full flex justify-center items-center">
       <Card data={data} />
