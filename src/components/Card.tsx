@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Input from '@/components/Input';
+import Result from '@/components/Result';
 interface CardProps {
   data: [''];
 }
@@ -12,7 +13,7 @@ function Card({ data }: CardProps) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
   };
-  const handleClickButtonCheck = () => {
+  const handleButtonCheck = () => {
     setLoading(true);
     setTimeout(() => {
       const randomElement = data[Math.floor(Math.random() * data.length)];
@@ -20,19 +21,13 @@ function Card({ data }: CardProps) {
       setLoading(false);
     }, 5000);
   };
-  const handleCheckLagi = () => {
+  const handleButtonCheckLagi = () => {
     setKhodam('');
     setName('');
   };
 
   if (khodam.length < 1 && !loading) {
-    return (
-      <Input
-        onChange={handleChange}
-        onClick={handleClickButtonCheck}
-        name={name}
-      />
-    );
+    return <Input onChange={handleChange} onClick={handleButtonCheck} name={name} />;
     // return (
     //   <div className="card w-96 shadow-xl glass-container-card text-white">
     //     <div className="card-body">
@@ -57,23 +52,24 @@ function Card({ data }: CardProps) {
     //   </div>
     // );
   } else if (khodam.length > 1 && !loading) {
-    return (
-      <div className="card w-96 shadow-xl glass-container-card text-white">
-        <div className="card-body">
-          <h1 className="card-title mx-auto text-3xl font-extrabold">Cek Khodam</h1>
-          <p className="text-sm mt-3">
-            Khodam yang bersemayam dalam diri{' '}
-            <span className="text-lg font-semibold text-accent">{name}</span> adalah sosok :
-          </p>
-          <h2 className="text-4xl font-extrabold text-accent mx-auto mt-3 mb-5">{khodam}</h2>
-          <div className="card-actions justify-end">
-            <button onClick={handleCheckLagi} className="btn btn-secondary px-5">
-              Check lagi
-            </button>
-          </div>
-        </div>
-      </div>
-    );
+    return <Result khodam={khodam} name={name} onClick={handleButtonCheckLagi} />;
+    // return (
+    //   <div className="card w-96 shadow-xl glass-container-card text-white">
+    //     <div className="card-body">
+    //       <h1 className="card-title mx-auto text-3xl font-extrabold">Cek Khodam</h1>
+    //       <p className="text-sm mt-3">
+    //         Khodam yang bersemayam dalam diri{' '}
+    //         <span className="text-lg font-semibold text-accent">{name}</span> adalah sosok :
+    //       </p>
+    //       <h2 className="text-4xl font-extrabold text-accent mx-auto mt-3 mb-5">{khodam}</h2>
+    //       <div className="card-actions justify-end">
+    //         <button onClick={handleCheckLagi} className="btn btn-secondary px-5">
+    //           Check lagi
+    //         </button>
+    //       </div>
+    //     </div>
+    //   </div>
+    // );
   } else {
     return (
       <div className="card w-96 shadow-xl glass-container-card text-white">
