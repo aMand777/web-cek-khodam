@@ -18,6 +18,7 @@ export default function RootLayout({
     <html
       lang="en"
       className="bg-[url('/bg-sm.webp')] md:bg-[url('/bg-md.webp')] lg:bg-[url('/bg-lg.webp')] bg-no-repeat bg-cover"
+      data-theme="cupcake"
     >
       <body className={`${inter.className} w-screen h-screen glass-container`}>{children}</body>
     </html>
