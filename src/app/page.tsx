@@ -1,4 +1,5 @@
 import Card from '@/components/Card';
+import Empty from '@/components/Empty';
 
 async function getData() {
   const res = await fetch(
@@ -13,6 +14,7 @@ export default async function Home() {
   return (
     <main className="w-full h-full flex justify-center items-center">
       <Card data={data} />
+      <Empty />
     </main>
   );
 }

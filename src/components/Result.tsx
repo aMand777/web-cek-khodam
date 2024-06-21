@@ -13,7 +13,7 @@ function Result({ name, khodam, onClick }: ResultProps) {
           Khodam yang bersemayam dalam diri{' '}
           <span className="text-lg font-semibold text-accent">{name}</span> adalah sosok :
         </p>
-        <h2 className="text-4xl font-extrabold text-accent mx-auto mt-3 mb-5">{khodam}</h2>
+        <h2 className="text-4xl font-extrabold text-accent text-center mt-3 mb-5">{khodam}</h2>
         <div className="card-actions justify-end">
           <button onClick={onClick} className="btn btn-secondary px-5">
             Check lagi

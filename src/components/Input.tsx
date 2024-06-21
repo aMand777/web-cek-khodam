@@ -1,10 +1,11 @@
 interface InputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   onClick: () => void;
   name: string;
 }
 
-function Input({ onChange, onClick, name }: InputProps) {
+function Input({ onChange, onClick, onKeyDown, name }: InputProps) {
   return (
     <div className="card w-96 shadow-xl glass-container-card text-white min-h-[276px]">
       <div className="card-body">
@@ -15,6 +16,7 @@ function Input({ onChange, onClick, name }: InputProps) {
           placeholder="Tulis nama kamu di sini"
           className="input input-bordered glass-container-input w-full max-w-sm my-3"
           onChange={onChange}
+          onKeyDown={onKeyDown}
         />
         <div className="card-actions justify-end">
           <button
