@@ -6,6 +6,7 @@ import Loading from '@/components/Loading';
 import { randomNumber } from '@/utils';
 import { openModal } from '@/utils';
 import Empty from '@/components/Empty';
+import useInitialName from '@/hook/useInitialName';
 
 interface CardProps {
   data: [''];
@@ -16,10 +17,12 @@ function Card({ data }: CardProps) {
   const [khodam, setKhodam] = useState('');
   const [loading, setLoading] = useState(false);
   const [emptyKhodam, setEmptyKhodam] = useState(0);
+  const { setInitialName } = useInitialName();
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
+    setInitialName(event.target.value);
   };
 
   const handleButtonCheck = () => {

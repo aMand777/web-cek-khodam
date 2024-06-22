@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
+import NameProvider from '@/context/Name';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,7 +21,9 @@ export default function RootLayout({
       className="bg-[url('/bg-sm.webp')] md:bg-[url('/bg-md.webp')] lg:bg-[url('/bg-lg.webp')] bg-no-repeat bg-cover"
       data-theme="cupcake"
     >
-      <body className={`${inter.className} w-screen h-screen glass-container`}>{children}</body>
+      <body className={`${inter.className} w-screen h-screen glass-container`}>
+        <NameProvider>{children}</NameProvider>
+      </body>
     </html>
   );
 }
