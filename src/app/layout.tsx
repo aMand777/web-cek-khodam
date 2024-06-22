@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Cek Khodam',
   description: 'Cek Khodam Online',
+  verification: {
+    google: process.env.GOOGLE_SEARCH_CONSOLE_VERIFICATION,
+  },
 };
 
 export default function RootLayout({
