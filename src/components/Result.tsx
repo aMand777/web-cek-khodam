@@ -10,16 +10,19 @@ interface ResultProps {
 
 function Result({ name, khodam, onClick }: ResultProps) {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
-    if (buttonRef.current) {
-      buttonRef.current.focus();
-    }
+    buttonRef.current?.focus();
+    audioRef.current?.play();
   }, []);
 
   return (
     <>
       <Confetti mode="boom" particleCount={50} colors={['#65C3C8', '#EF9FBC', '#EEAF3A']} />
+      <audio ref={audioRef}>
+        <source src="/wolf.mp3" />
+      </audio>
       <div className="card w-96 shadow-xl glass-container-card text-white">
         <div className="card-body">
           <h1 className="card-title mx-auto text-3xl font-extrabold">Cek Khodam</h1>
