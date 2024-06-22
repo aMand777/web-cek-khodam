@@ -36,7 +36,7 @@ function Card({ data }: CardProps) {
         setKhodam(randomData);
         setLoading(false);
       }
-    }, 500);
+    }, 5000);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -54,7 +54,7 @@ function Card({ data }: CardProps) {
           setKhodam(randomData);
           setLoading(false);
         }
-      }, 500);
+      }, 5000);
     }
   };
 
@@ -65,7 +65,7 @@ function Card({ data }: CardProps) {
 
   return (
     <div>
-      <Empty ref={audioRef} />
+      <Empty />
       <audio ref={audioRef}>
         <source src="/kosong.mp3" />
       </audio>
@@ -85,6 +85,9 @@ function Card({ data }: CardProps) {
           )}
         </>
       )}
+      <div className="glass-container-input w-fit mx-auto p-1 rounded-lg mt-5">
+        <p className="text-center text-sm text-secondary">Created by @amand</p>
+      </div>
     </div>
   );
 }
