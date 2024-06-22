@@ -1,3 +1,5 @@
+import React from 'react';
+
 const random1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const random2 = [11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const random3 = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
@@ -18,7 +20,8 @@ export const randomNumber = [
   randomSample5,
 ];
 
-export const openModal = (id: string) => {
+export const openModal = (id: string, audio: React.RefObject<HTMLAudioElement> | null) => {
+  audio?.current?.play();
   const openModal = document.getElementById(id) as HTMLDialogElement | null;
   if (openModal) {
     openModal.showModal();

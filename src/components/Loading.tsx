@@ -10,8 +10,8 @@ function Loading({ name }: LoadingProps) {
         <div className="flex items-center justify-center my-10">
           <span className="loading loading-ball loading-lg text-primary"></span>
         </div>
-        <p className="mx-auto text-xs">Kami sedang memeriksa khodam yang ada di dalam diri</p>
-        <p className="text-lg font-semibold text-accent text-center">{name}</p>
+        <p className="mx-auto text-[13px]">Kami sedang memeriksa khodam pendamping dari</p>
+        <p className="text-xl font-semibold text-accent text-center">{name}</p>
       </div>
     </div>
   );

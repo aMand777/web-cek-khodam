@@ -1,10 +1,11 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Input from '@/components/Input';
 import Result from '@/components/Result';
 import Loading from '@/components/Loading';
 import { randomNumber } from '@/utils';
 import { openModal } from '@/utils';
+import Empty from '@/components/Empty';
 
 interface CardProps {
   data: [''];
@@ -15,6 +16,7 @@ function Card({ data }: CardProps) {
   const [khodam, setKhodam] = useState('');
   const [loading, setLoading] = useState(false);
   const [emptyKhodam, setEmptyKhodam] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
@@ -25,7 +27,7 @@ function Card({ data }: CardProps) {
     setLoading(true);
     setTimeout(() => {
       if (randomNumber.filter((number) => number).includes(emptyKhodam)) {
-        openModal('modal-empty');
+        openModal('modal-empty', audioRef);
         setKhodam('');
         setName('');
         setLoading(false);
@@ -34,7 +36,7 @@ function Card({ data }: CardProps) {
         setKhodam(randomData);
         setLoading(false);
       }
-    }, 5000);
+    }, 500);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -43,7 +45,7 @@ function Card({ data }: CardProps) {
       setLoading(true);
       setTimeout(() => {
         if (randomNumber.filter((number) => number).includes(emptyKhodam)) {
-          openModal('modal-empty');
+          openModal('modal-empty', audioRef);
           setKhodam('');
           setName('');
           setLoading(false);
@@ -52,7 +54,7 @@ function Card({ data }: CardProps) {
           setKhodam(randomData);
           setLoading(false);
         }
-      }, 5000);
+      }, 500);
     }
   };
 
@@ -61,20 +63,30 @@ function Card({ data }: CardProps) {
     setName('');
   };
 
-  if (khodam.length < 1 && !loading) {
-    return (
-      <Input
-        onChange={handleChange}
-        onClick={handleButtonCheck}
-        onKeyDown={handleKeyDown}
-        name={name}
-      />
-    );
-  } else if (khodam.length > 0 && !loading) {
-    return <Result khodam={khodam} name={name} onClick={handleButtonCheckLagi} />;
-  } else {
-    return <Loading name={name} />;
-  }
+  return (
+    <div>
+      <Empty ref={audioRef} />
+      <audio ref={audioRef}>
+        <source src="/kosong.mp3" />
+      </audio>
+      {loading ? (
+        <Loading name={name} />
+      ) : (
+        <>
+          {khodam.length < 1 ? (
+            <Input
+              onChange={handleChange}
+              onClick={handleButtonCheck}
+              onKeyDown={handleKeyDown}
+              name={name}
+            />
+          ) : (
+            <Result khodam={khodam} name={name} onClick={handleButtonCheckLagi} />
+          )}
+        </>
+      )}
+    </div>
+  );
 }
 
 export default Card;
