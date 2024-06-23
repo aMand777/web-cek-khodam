@@ -9,9 +9,11 @@ async function getData() {
 
 export default async function Home() {
   const data = await getData();
+  const listData = data.filter((data: string) => data !== null);
+
   return (
     <main className="w-full h-full flex justify-center items-center">
-      <Card data={data} />
+      <Card data={listData} />
     </main>
   );
 }

@@ -69,7 +69,7 @@ function Card({ data }: CardProps) {
     setName('');
   };
 
-  const message = `Khodam pendamping di dalam diri ${name} ada sosok "${khodam}" Cek khodam kamu disini 👉 https://web-cek-khodam.vercel.app/`;
+  const message = `Khodam pendamping di dalam diri ${name} ada sosok "${khodam}". Cek khodam kamu disini 👉 https://web-cek-khodam.vercel.app/`;
   const urlWhatsapp = `https://wa.me/?text=${encodeURIComponent(message)}`;
   const urlX = `https://x.com/intent/post?url=${encodeURIComponent(message)}`;
 
