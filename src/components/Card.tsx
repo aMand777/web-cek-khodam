@@ -70,13 +70,13 @@ function Card({ data }: CardProps) {
     <div>
       <Empty />
       <audio ref={audioRef}>
-        <source src="/kosong.mp3" />
+        <source src="/sound/kosong.mp3" />
       </audio>
       {loading ? (
         <Loading name={name} />
       ) : (
         <>
-          {khodam.length < 1 ? (
+          {khodam?.length < 1 ? (
             <Input
               onChange={handleChange}
               onClick={handleButtonCheck}

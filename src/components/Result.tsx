@@ -1,6 +1,7 @@
 'use client';
 import { useRef, useEffect } from 'react';
 import Confetti from 'react-confetti-boom';
+import { sound } from '@/utils';
 
 interface ResultProps {
   name: string;
@@ -11,6 +12,7 @@ interface ResultProps {
 function Result({ name, khodam, onClick }: ResultProps) {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const soundEffect = sound[Math.floor(Math.random() * sound.length)];
 
   useEffect(() => {
     buttonRef.current?.focus();
@@ -21,7 +23,7 @@ function Result({ name, khodam, onClick }: ResultProps) {
     <>
       <Confetti mode="boom" particleCount={50} colors={['#65C3C8', '#EF9FBC', '#EEAF3A']} />
       <audio ref={audioRef}>
-        <source src="/wolf.mp3" />
+        <source src={soundEffect} />
       </audio>
       <div className="card w-96 shadow-xl glass-container-card text-white">
         <div className="card-body">

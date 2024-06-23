@@ -20,6 +20,20 @@ export const randomNumber = [
   randomSample5,
 ];
 
+  export const sound = [
+    '/sound/kunti.mp3',
+    '/sound/wolf.mp3',
+    '/sound/ahh.mp3',
+    '/sound/mak-lampir.mp3',
+    '/sound/rawr.mp3',
+    '/sound/wow.mp3',
+    '/sound/fart.mp3',
+    '/sound/bwa.mp3',
+    '/sound/bomb.mp3',
+    '/sound/quek.mp3',
+    '/sound/window-error.mp3',
+  ];
+
 export const openModal = (id: string, audio: React.RefObject<HTMLAudioElement> | null) => {
   audio?.current?.play();
   const openModal = document.getElementById(id) as HTMLDialogElement | null;

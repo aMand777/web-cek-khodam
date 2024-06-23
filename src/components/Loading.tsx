@@ -14,7 +14,7 @@ function Loading({ name }: LoadingProps) {
   return (
     <>
       <audio ref={audioRef}>
-        <source src="/heart-rate.mp3" />
+        <source src="/sound/heart.mp3" />
       </audio>
       <div className="card w-96 shadow-xl glass-container-card min-h-[276px] text-white">
         <div className="card-body">
