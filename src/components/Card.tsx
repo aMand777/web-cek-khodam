@@ -12,7 +12,7 @@ import X from '@/components/X';
 import Share from '@/components/Share';
 
 interface CardProps {
-  data: [''];
+  data: string[];
 }
 
 function Card({ data }: CardProps) {
