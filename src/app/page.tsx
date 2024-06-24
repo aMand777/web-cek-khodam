@@ -1,7 +1,7 @@
 import Card from '@/components/Card';
 
 async function getData() {
-  const res = await fetch(`${process.env.BASE_API_URL}`, { next: { revalidate: 86400 } });
+  const res = await fetch(`${process.env.BASE_API_URL}`);
   const data = await res.json();
   const values = Object?.values(data);
   const listData = (values as { khodam: string }[]).map((value) => value.khodam);
