@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: 'https://web-cek-khodam.vercel.app/sitemap.ts',
       lastModified: new Date(),
-      changeFrequency: 'hourly',
+      changeFrequency: 'monthly',
       priority: 1,
     },
   ];
