@@ -42,7 +42,7 @@ function Card({ data }: CardProps) {
         setKhodam(randomData);
         setLoading(false);
       }
-    }, 6000);
+    }, 4000);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
@@ -60,7 +60,7 @@ function Card({ data }: CardProps) {
           setKhodam(randomData);
           setLoading(false);
         }
-      }, 6000);
+      }, 4000);
     }
   };
 
