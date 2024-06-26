@@ -1,9 +1,9 @@
 'use client';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Input from '@/components/Input';
 import Result from '@/components/Result';
 import Loading from '@/components/Loading';
-import { randomNumber } from '@/utils';
+import { randomNumber, shuffleData } from '@/utils';
 import { openModal } from '@/utils';
 import Empty from '@/components/Empty';
 import useInitialName from '@/hook/useInitialName';
@@ -16,51 +16,68 @@ interface CardProps {
 }
 
 function Card({ data }: CardProps) {
+  const [dataKhodam, setDataKhodam] = useState<string[]>([]);
   const [name, setName] = useState('');
   const [khodam, setKhodam] = useState('');
   const [loading, setLoading] = useState(false);
-  const [emptyKhodam, setEmptyKhodam] = useState(0);
   const { setInitialName } = useInitialName();
+  const [index, setIndex] = useState(0);
+  const [initialRandomEmpty, setInitialRandomEmpty] = useState(0);
+  const [randomEmpty, setRandomEmpty] = useState(() => randomNumber());
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    setDataKhodam(shuffleData(data));
+  }, [data]);
+
+  useEffect(() => {
+    if (initialRandomEmpty === 10) {
+      setInitialRandomEmpty(0);
+      setRandomEmpty(randomNumber());
+    }
+  }, [initialRandomEmpty]);
+
+  const handleCheckKhodam = () => {
+    const newIndex = (index + 1) % data.length;
+    setIndex(newIndex);
+    setKhodam(dataKhodam[newIndex]);
+  };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value);
     setInitialName(event.target.value);
   };
-
   const handleButtonCheck = () => {
-    const randomData = data[Math.floor(Math.random() * data.length)];
-    setEmptyKhodam(emptyKhodam + 1);
     setLoading(true);
+    setInitialRandomEmpty((prev) => prev + 1);
     setTimeout(() => {
-      if (randomNumber.filter((number) => number).includes(emptyKhodam)) {
+      if (randomEmpty === initialRandomEmpty) {
         openModal('modal-empty', audioRef);
         setKhodam('');
         setName('');
         setLoading(false);
       } else {
-        setKhodam(randomData);
         setLoading(false);
+        handleCheckKhodam();
       }
-    }, 4000);
+    }, 3100);
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    const randomData = data[Math.floor(Math.random() * data.length)];
     if (event.key === 'Enter' && name.length > 0) {
-      setEmptyKhodam(emptyKhodam + 1);
       setLoading(true);
+      setInitialRandomEmpty((prev) => prev + 1);
       setTimeout(() => {
-        if (randomNumber.filter((number) => number).includes(emptyKhodam)) {
+        if (randomEmpty === initialRandomEmpty) {
           openModal('modal-empty', audioRef);
           setKhodam('');
           setName('');
           setLoading(false);
         } else {
-          setKhodam(randomData);
           setLoading(false);
+          handleCheckKhodam();
         }
-      }, 4000);
+      }, 3100);
     }
   };
 
