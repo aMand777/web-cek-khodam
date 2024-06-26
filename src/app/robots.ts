@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://web-cek-khodam.vercel.app/sitemap.ts',
+    sitemap: 'https://web-cek-khodam.vercel.app/sitemap.xml',
   };
 }
