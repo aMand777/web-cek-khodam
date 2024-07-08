@@ -34,7 +34,7 @@ function Result({ name, khodam, onClick }: ResultProps) {
           </p>
           <h2 className="text-4xl font-extrabold text-accent text-center mt-3 mb-5">{khodam}</h2>
           <div className="card-actions justify-end">
-            <button ref={buttonRef} onClick={onClick} className="btn btn-secondary px-5">
+            <button ref={buttonRef} onClick={onClick} className="btn btn-primary px-5">
               Check lagi
             </button>
           </div>
