@@ -1,6 +1,5 @@
 import Card from '@/components/Card';
-import { getDataKhodam, postDataVisitor, getDataVisitor, putDataVisitor, deleteDataVisitor } from '@/services';
-
+import { getDataKhodam, postDataVisitor, getDataVisitor, putDataVisitor } from '@/services';
 
 export default async function Home() {
   const dataVisitor = await getDataVisitor();
@@ -8,7 +7,7 @@ export default async function Home() {
   if (dataVisitor === null) {
     await postDataVisitor({visitor: '1'});
   } else {
-    putDataVisitor({visitor: `${Number(dataVisitor[0].visitor) + 1}`}, dataVisitor[0].id);
+    await putDataVisitor({visitor: `${Number(dataVisitor[0].visitor) + 1}`}, dataVisitor[0].id);
   }
 
   const listData = await getDataKhodam();
