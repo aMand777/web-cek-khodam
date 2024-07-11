@@ -1,3 +1,4 @@
+import job from '@/utils/cron';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
@@ -12,6 +13,8 @@ export const metadata: Metadata = {
     google: process.env.GOOGLE_SEARCH_CONSOLE_VERIFICATION,
   },
 };
+
+job.start();
 
 export default function RootLayout({
   children,
